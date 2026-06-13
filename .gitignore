@@ -1,4 +1,8 @@
+# IDE
 .vscode/
+.idea/
+*.swp
+*.swo
 
 # Python
 __pycache__/
@@ -12,14 +16,24 @@ venv/
 env/
 .env
 
-# Downloaded files
+# Downloaded & pulled files
 Downloaded-Files/
+backup.ab
+*.apk
+
+# ADB dumps & screenshots in project root
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.opus
+
+# Logs & data exports
+*.log
+*.tmp
+*.txt
+*.error.txt
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Logs & temp
-*.log
-*.tmp
-*.apk

@@ -1,203 +1,53 @@
-from modules import color
+from modules.color import RED, GREEN, CYAN, YELLOW, WHITE, RESET
 
-version = "v1.00"
+version = "v2.0"
+
+logo = f"""
+{RED}        █████╗ ███╗   ██╗██████╗ ██████╗  ██████╗ ███████╗ ██████╗ ███████╗
+{RED}       ██╔══██╗████╗  ██║██╔══██╗██╔══██╗██╔═══██╗██╔════╝██╔═══██╗██╔════╝
+{RED}       ███████║██╔██╗ ██║██║  ██║██████╔╝██║   ██║█████╗  ██║   ██║█████╗
+{RED}       ██╔══██║██║╚██╗██║██║  ██║██╔══██╗██║   ██║██╔══╝  ██║   ██║██╔══╝
+{RED}       ██║  ██║██║ ╚████║██████╔╝██║  ██║╚██████╔╝██║     ╚██████╔╝███████╗
+{RED}       ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝{RESET}
+{GREEN}                        Android Debug Forge Toolkit{YELLOW}  {version}{RESET}
+{CYAN}                     github.com/hadeyghoptey/AndroForge{RESET}
+"""
 
 menu1 = f"""
-
-    {color.WHITE}1. {color.GREEN}Connect a Device             {color.WHITE}6. {color.GREEN}Get Screenshot                       {color.WHITE}11. {color.GREEN}Install an APK  
-    {color.WHITE}2. {color.GREEN}List Connected Devices       {color.WHITE}7. {color.GREEN}Screen Record                        {color.WHITE}12. {color.GREEN}Uninstall an App
-    {color.WHITE}3. {color.GREEN}Disconnect All Devices       {color.WHITE}8. {color.GREEN}Download File/Folder from Device     {color.WHITE}13. {color.GREEN}List Installed Apps 
-    {color.WHITE}4. {color.GREEN}Scan Network for Devices     {color.WHITE}9. {color.GREEN}Send File/Folder to Device           {color.WHITE}14. {color.GREEN}Access Device Shell
-    {color.WHITE}5. {color.GREEN}Mirror & Control Device     {color.WHITE}10. {color.GREEN}Run an App                           {color.WHITE}15. {color.GREEN}Hack Device {color.RED}(Using Metasploit)
-
-
-   {color.YELLOW} 
-  N : Next Page                                      (Page : 1 / 3)"""
+{WHITE} 1. {GREEN}Connect a Device          {WHITE}10. {GREEN}Install an APK
+{WHITE} 2. {GREEN}List Connected Devices    {WHITE}11. {GREEN}Uninstall an App
+{WHITE} 3. {GREEN}Disconnect All Devices    {WHITE}12. {GREEN}Get Screenshot
+{WHITE} 4. {GREEN}Scan Network for Devices  {WHITE}13. {GREEN}Screen Record
+{WHITE} 5. {GREEN}Access Device Shell       {WHITE}14. {GREEN}Download File/Folder
+{WHITE} 6. {GREEN}Get Device Information    {WHITE}15. {GREEN}Send File/Folder
+{WHITE} 7. {GREEN}Battery Information       {WHITE}16. {GREEN}Copy WhatsApp Data
+{WHITE} 8. {GREEN}List Installed Apps       {WHITE}17. {GREEN}Copy Camera Photos
+{WHITE} 9. {GREEN}Run an App                {WHITE}99. {CYAN}Clear Screen
+{YELLOW}                               N: Next Page  (Page 1/2){RESET}
+"""
 
 menu2 = f"""
-
-    {color.WHITE}16. {color.GREEN}List All Folders/Files      {color.WHITE}21. {color.GREEN}Anonymous Screenshot                {color.WHITE}26. {color.GREEN}Play a Video on Device
-    {color.WHITE}17. {color.GREEN}Send SMS                    {color.WHITE}22. {color.GREEN}Anonymous Screen Record             {color.WHITE}27. {color.GREEN}Get Device Information
-    {color.WHITE}18. {color.GREEN}Copy WhatsApp Data          {color.WHITE}23. {color.GREEN}Open a Link on Device               {color.WHITE}28. {color.GREEN}Get Battery Information
-    {color.WHITE}19. {color.GREEN}Copy All Screenshots        {color.WHITE}24. {color.GREEN}Display a Photo on Device           {color.WHITE}29. {color.GREEN}Restart Device
-    {color.WHITE}20. {color.GREEN}Copy All Camera Photos      {color.WHITE}25. {color.GREEN}Play an Audio on Device             {color.WHITE}30. {color.GREEN}Advanced Reboot Options
-
-
-   {color.YELLOW} 
-  P : Previous Page         N : Next Page            (Page : 2 / 3)"""
-
-menu3 = f"""
-
-    {color.WHITE}31. {color.GREEN}Unlock Device               {color.WHITE}36. {color.GREEN}Extract APK from Installed App      {color.WHITE}41. {color.GREEN}Record Mic Audio
-    {color.WHITE}32. {color.GREEN}Lock Device                 {color.WHITE}37. {color.GREEN}Stop ADB Server                     {color.WHITE}42. {color.GREEN}Listen Device Audio
-    {color.WHITE}33. {color.GREEN}Dump All SMS                {color.WHITE}38. {color.GREEN}Power Off Device                    {color.WHITE}43. {color.GREEN}Record Device Audio
-    {color.WHITE}34. {color.GREEN}Dump All Contacts           {color.WHITE}39. {color.GREEN}Use Keycodes (Control Device)       {color.WHITE}44. {color.GREEN}Update BAU_KO_PHONE
-    {color.WHITE}35. {color.GREEN}Dump Call Logs              {color.WHITE}40. {color.GREEN}Listen Mic Audio                    {color.WHITE}45. {color.GREEN}Visit BAU_KO_PHONE on GitHub
-
-
-   {color.YELLOW} 
-  P : Previous Page                                  (Page : 3 / 3)"""
-
-menu = [menu1, menu2, menu3]
-
-instruction = f"""
-
-This attack will launch Metasploit-Framework    (msfconsole)
-
-Use 'Ctrl + C' to stop at any point
-
-1. Wait until you see:
-    
-    {color.GREEN}meterpreter >      {color.WHITE}
-
-2. Then use 'help' command to see all meterpreter commands:
-
-    {color.GREEN}meterpreter > {color.YELLOW}help       {color.WHITE}
-
-3. To exit meterpreter enter 'exit' or To exit Metasploit enter 'exit -y':
-
-    {color.GREEN}meterpreter > {color.YELLOW}exit       {color.WHITE}
-
-    {color.GREEN}msf6 > {color.YELLOW}exit -y       {color.WHITE}
-     
-{color.RED}[PhoneSploit Pro]   {color.WHITE}Press 'Enter' to continue attack / '0' to Go Back to Main Menu
-    """
-
-banner2 = f"""
-
-██████   █████  ██    ██     ██   ██  ██████      ██████  ██   ██  ██████  ███    ██ ███████ 
-██   ██ ██   ██ ██    ██     ██  ██  ██    ██     ██   ██ ██   ██ ██    ██ ████   ██ ██      
-██████  ███████ ██    ██     █████   ██    ██     ██████  ███████ ██    ██ ██ ██  ██ █████   
-██   ██ ██   ██ ██    ██     ██  ██  ██    ██     ██      ██   ██ ██    ██ ██  ██ ██ ██      
-██████  ██   ██  ██████      ██   ██  ██████      ██      ██   ██  ██████  ██   ████ ███████ 
-                                                                                             
-                                                                                             
-            {color.RED}{version}{color.WHITE}            {color.WHITE}By github.com/hadeyghopte
+{WHITE}18. {GREEN}Send SMS                  {WHITE}28. {GREEN}WiFi Management
+{WHITE}19. {GREEN}Open Link on Device       {WHITE}29. {GREEN}Unlock Device
+{WHITE}20. {GREEN}Advanced Reboot Options   {WHITE}30. {GREEN}Lock Device
+{WHITE}21. {GREEN}Port Forwarding           {WHITE}31. {GREEN}Use Keycodes
+{WHITE}22. {GREEN}Logcat Viewer             {WHITE}32. {GREEN}Dump SMS
+{WHITE}23. {GREEN}Logcat Export             {WHITE}33. {GREEN}Dump Contacts
+{WHITE}24. {GREEN}APK Extractor             {WHITE}34. {GREEN}Dump Call Logs
+{WHITE}25. {GREEN}Device Backup             {WHITE}35. {GREEN}Stop ADB Server
+{WHITE}26. {GREEN}Device Restore            {WHITE}36. {GREEN}Power Off Device
+{WHITE}27. {GREEN}Notification Listener     {WHITE}99. {CYAN}Clear Screen
+{YELLOW}                               P: Previous Page  (Page 2/2){RESET}
 """
 
-banner3 = f"""
-
-  ██████   █████  ██    ██     ██   ██  ██████      ██████  ██   ██  ██████  ███    ██ ███████ 
-██   ██ ██   ██ ██    ██     ██  ██  ██    ██     ██   ██ ██   ██ ██    ██ ████   ██ ██      
-██████  ███████ ██    ██     █████   ██    ██     ██████  ███████ ██    ██ ██ ██  ██ █████   
-██   ██ ██   ██ ██    ██     ██  ██  ██    ██     ██      ██   ██ ██    ██ ██  ██ ██ ██      
-██████  ██   ██  ██████      ██   ██  ██████      ██      ██   ██  ██████  ██   ████ ███████ 
-                                                                                             
-                                                                                             
-            {color.RED}{version}{color.WHITE}             {color.WHITE}By github.com/hadeyghopte
-"""
-
-banner4 = f"""
- _______  _______  __   __    ___   _  _______    _______  __   __  _______  __    _  _______ 
-|  _    ||   _   ||  | |  |  |   | | ||       |  |       ||  | |  ||       ||  |  | ||       |
-| |_|   ||  |_|  ||  | |  |  |   |_| ||   _   |  |    _  ||  |_|  ||   _   ||   |_| ||    ___|
-|       ||       ||  |_|  |  |      _||  | |  |  |   |_| ||       ||  | |  ||       ||   |___ 
-|  _   | |       ||       |  |     |_ |  |_|  |  |    ___||       ||  |_|  ||  _    ||    ___|
-| |_|   ||   _   ||       |  |    _  ||       |  |   |    |   _   ||       || | |   ||   |___ 
-|_______||__| |__||_______|  |___| |_||_______|  |___|    |__| |__||_______||_|  |__||_______|
-        {color.RED}{version}{color.WHITE}                             {color.WHITE}By github.com/hadeyghopte
-"""
-banner5 = f"""
- _______  _______  __   __    ___   _  _______    _______  __   __  _______  __    _  _______ 
-|  _    ||   _   ||  | |  |  |   | | ||       |  |       ||  | |  ||       ||  |  | ||       |
-| |_|   ||  |_|  ||  | |  |  |   |_| ||   _   |  |    _  ||  |_|  ||   _   ||   |_| ||    ___|
-|       ||       ||  |_|  |  |      _||  | |  |  |   |_| ||       ||  | |  ||       ||   |___ 
-|  _   | |       ||       |  |     |_ |  |_|  |  |    ___||       ||  |_|  ||  _    ||    ___|
-| |_|   ||   _   ||       |  |    _  ||       |  |   |    |   _   ||       || | |   ||   |___ 
-|_______||__| |__||_______|  |___| |_||_______|  |___|    |__| |__||_______||_|  |__||_______|         
-
-        {color.RED}{version}{color.WHITE}        {color.WHITE}By github.com/hadeyghopte
-"""
-
-banner6 = f"""
- _______  _______  __   __    ___   _  _______    _______  __   __  _______  __    _  _______ 
-|  _    ||   _   ||  | |  |  |   | | ||       |  |       ||  | |  ||       ||  |  | ||       |
-| |_|   ||  |_|  ||  | |  |  |   |_| ||   _   |  |    _  ||  |_|  ||   _   ||   |_| ||    ___|
-|       ||       ||  |_|  |  |      _||  | |  |  |   |_| ||       ||  | |  ||       ||   |___ 
-|  _   | |       ||       |  |     |_ |  |_|  |  |    ___||       ||  |_|  ||  _    ||    ___|
-| |_|   ||   _   ||       |  |    _  ||       |  |   |    |   _   ||       || | |   ||   |___ 
-|_______||__| |__||_______|  |___| |_||_______|  |___|    |__| |__||_______||_|  |__||_______|                
-    
-           {color.RED}{version}{color.WHITE}               {color.WHITE}By github.com/hadeyghopte
-
-"""
-
-banner10 = f"""
- _______  _______  __   __    ___   _  _______    _______  __   __  _______  __    _  _______ 
-|  _    ||   _   ||  | |  |  |   | | ||       |  |       ||  | |  ||       ||  |  | ||       |
-| |_|   ||  |_|  ||  | |  |  |   |_| ||   _   |  |    _  ||  |_|  ||   _   ||   |_| ||    ___|
-|       ||       ||  |_|  |  |      _||  | |  |  |   |_| ||       ||  | |  ||       ||   |___ 
-|  _   | |       ||       |  |     |_ |  |_|  |  |    ___||       ||  |_|  ||  _    ||    ___|
-| |_|   ||   _   ||       |  |    _  ||       |  |   |    |   _   ||       || | |   ||   |___ 
-|_______||__| |__||_______|  |___| |_||_______|  |___|    |__| |__||_______||_|  |__||_______|
-            {color.RED}{version}{color.WHITE}                                {color.WHITE}By github.com/hadeyghopte
-
-"""
-
-banner11 = f"""
- _______  _______  __   __    ___   _  _______    _______  __   __  _______  __    _  _______ 
-|  _    ||   _   ||  | |  |  |   | | ||       |  |       ||  | |  ||       ||  |  | ||       |
-| |_|   ||  |_|  ||  | |  |  |   |_| ||   _   |  |    _  ||  |_|  ||   _   ||   |_| ||    ___|
-|       ||       ||  |_|  |  |      _||  | |  |  |   |_| ||       ||  | |  ||       ||   |___ 
-|  _   | |       ||       |  |     |_ |  |_|  |  |    ___||       ||  |_|  ||  _    ||    ___|
-| |_|   ||   _   ||       |  |    _  ||       |  |   |    |   _   ||       || | |   ||   |___ 
-|_______||__| |__||_______|  |___| |_||_______|  |___|    |__| |__||_______||_|  |__||_______|
-            {color.RED}{version}{color.WHITE}                            {color.WHITE}By github.com/hadeyghopte
-
-"""
-
-banner12 = f"""
-
- _______  _______  __   __    ___   _  _______    _______  __   __  _______  __    _  _______ 
-|  _    ||   _   ||  | |  |  |   | | ||       |  |       ||  | |  ||       ||  |  | ||       |
-| |_|   ||  |_|  ||  | |  |  |   |_| ||   _   |  |    _  ||  |_|  ||   _   ||   |_| ||    ___|
-|       ||       ||  |_|  |  |      _||  | |  |  |   |_| ||       ||  | |  ||       ||   |___ 
-|  _   | |       ||       |  |     |_ |  |_|  |  |    ___||       ||  |_|  ||  _    ||    ___|
-| |_|   ||   _   ||       |  |    _  ||       |  |   |    |   _   ||       || | |   ||   |___ 
-|_______||__| |__||_______|  |___| |_||_______|  |___|    |__| |__||_______||_|  |__||_______|
-
-            {color.RED}{version}{color.WHITE}                            {color.WHITE}By github.com/hadeyghopte
-
-"""
-banner_list = [
-    banner2,
-    banner3,
-    banner4,
-    banner5,
-    banner6,
-    banner10,
-    banner11,
-    banner12,
-]
-
-instructions_banner = f"""{color.CYAN}
-        ____           __                  __  _                 
-       /  _/___  _____/ /________  _______/ /_(_)___  ____  _____
-       / // __ \/ ___/ __/ ___/ / / / ___/ __/ / __ \/ __ \/ ___/
-     _/ // / / (__  ) /_/ /  / /_/ / /__/ /_/ / /_/ / / / (__  ) 
-    /___/_/ /_/____/\__/_/   \__,_/\___/\__/_/\____/_/ /_/____/  
-        {color.WHITE}                                                        
-"""
-
-hacking_banner = f"""{color.GREEN}
-    
-    █░█ ▄▀█ █▀▀ █▄▀ █ █▄░█ █▀▀ ░ ░ ░
-    █▀█ █▀█ █▄▄ █░█ █ █░▀█ █▄█ ▄ ▄ ▄
-    {color.WHITE}
-"""
+menu = [menu1, menu2]
 
 keycode_menu = f"""
-    {color.WHITE}1. {color.GREEN}Keyboard Text Input                {color.WHITE}11. {color.GREEN}Enter
-    {color.WHITE}2. {color.GREEN}Home                               {color.WHITE}12. {color.GREEN}Volume Up
-    {color.WHITE}3. {color.GREEN}Back                               {color.WHITE}13. {color.GREEN}Volume Down          
-    {color.WHITE}4. {color.GREEN}Recent Apps                        {color.WHITE}14. {color.GREEN}Media Play           
-    {color.WHITE}5. {color.GREEN}Power Button                       {color.WHITE}15. {color.GREEN}Media Pause
-    {color.WHITE}6. {color.GREEN}DPAD Up                            {color.WHITE}16. {color.GREEN}Tab 
-    {color.WHITE}7. {color.GREEN}DPAD Down                          {color.WHITE}17. {color.GREEN}Esc
-    {color.WHITE}8. {color.GREEN}DPAD Left           
-    {color.WHITE}9. {color.GREEN}DPAD Right
-   {color.WHITE}10. {color.GREEN}Delete/Backspace
-"""
-"""
-Copyright © 2025 MANASH HADA (github.com/hadeyghopte)
+{WHITE} 1. {GREEN}Keyboard Text Input   {WHITE} 8. {GREEN}DPAD Left         {WHITE}14. {GREEN}Media Play
+{WHITE} 2. {GREEN}Home                  {WHITE} 9. {GREEN}DPAD Right        {WHITE}15. {GREEN}Media Pause
+{WHITE} 3. {GREEN}Back                  {WHITE}10. {GREEN}Delete/Backspace  {WHITE}16. {GREEN}Tab
+{WHITE} 4. {GREEN}Recent Apps           {WHITE}11. {GREEN}Enter             {WHITE}17. {GREEN}Esc
+{WHITE} 5. {GREEN}Power Button          {WHITE}12. {GREEN}Volume Up
+{WHITE} 6. {GREEN}DPAD Up               {WHITE}13. {GREEN}Volume Down
+{WHITE} 7. {GREEN}DPAD Down             {WHITE} 0. {WHITE}Back to Menu
 """

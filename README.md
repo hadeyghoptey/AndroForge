@@ -1,135 +1,121 @@
-# 🚀 BAU KO PHONE - Android Exploitation Toolkit
+# AndroForge
 
-An advanced all-in-one hacking framework written in `Python` for remotely exploiting Android devices using `ADB` (Android Debug Bridge) and `Metasploit-Framework`.
+Android Debug Forge Toolkit — a modular ADB toolkit for Android device management over USB or Wi-Fi.
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](CONTRIBUTING.md)
+## Features
 
-</div>
+### Page 1 — Connection and Device Management
 
-## 🔥 Features
+| # | Feature | Description |
+|---|---------|-------------|
+| 1 | Connect a Device | Wi-Fi ADB connection (IP:5555) |
+| 2 | List Connected Devices | Display connected devices with transport info |
+| 3 | Disconnect All Devices | Terminate all ADB sessions |
+| 4 | Scan Network for Devices | Nmap-based LAN scan probing ADB ports 5555 and 5554 |
+| 5 | Access Device Shell | Interactive ADB shell session |
+| 6 | Get Device Information | Model, manufacturer, Android version, security patch |
+| 7 | Battery Information | Level, status, health, temperature, technology |
+| 8 | List Installed Apps | Display third-party or all packages |
+| 9 | Run an App | Launch app by list selection or package name |
+| 10 | Install an APK | Install package from local file path |
+| 11 | Uninstall an App | Remove app by list selection or package name |
+| 12 | Get Screenshot | Capture screen with optional auto-delete mode |
+| 13 | Screen Record | Record screen with configurable duration |
+| 14 | Download File or Folder | Pull files from device storage |
+| 15 | Send File or Folder | Push files to device storage |
+| 16 | Copy WhatsApp Data | Pull WhatsApp data directory (legacy and scoped storage paths) |
+| 17 | Copy Camera Photos | Pull all photos from DCIM/Camera |
 
-### Core Capabilities
+### Page 2 — Tools and Utilities
 
-- **One-Click Meterpreter Session**: Fully automated payload creation, installation, and execution
-- **ADB Toolkit**: Comprehensive suite for Android device management
-- **Cross-Platform**: Works on Windows, Linux, and macOS
-- **WiFi & USB Support**: Connect to devices via both wireless and wired connections
+| # | Feature | Description |
+|---|---------|-------------|
+| 18 | Send SMS | Send SMS via ADB service call (Android 12+) |
+| 19 | Open Link on Device | Open URL through ACTION_VIEW intent |
+| 20 | Advanced Reboot | Reboot to system, recovery, bootloader, or fastboot |
+| 21 | Port Forwarding | Configure and list forward and reverse TCP rules |
+| 22 | Logcat Viewer | Live logcat stream with optional filter |
+| 23 | Logcat Export | Save last N log lines to a timestamped file |
+| 24 | APK Extractor | Pull installed APK from device to computer |
+| 25 | Device Backup | Full device backup via adb backup |
+| 26 | Device Restore | Restore device from a backup file |
+| 27 | Notification Listener | Dump active notifications via dumpsys |
+| 28 | WiFi Management | List saved networks, toggle, view IP, ping, dump status |
+| 29 | Unlock Device | Wake, swipe, and enter passcode (resolution-aware) |
+| 30 | Lock Device | Lock screen via power button |
+| 31 | Use Keycodes | Interactive keycode sender with 17 actions |
+| 32 | Dump SMS | Export SMS messages to file |
+| 33 | Dump Contacts | Export contact list to file |
+| 34 | Dump Call Logs | Export call history to file |
+| 35 | Stop ADB Server | Kill the ADB server process |
+| 36 | Power Off Device | Shut down device |
 
-### Exploitation Features
+## Requirements
 
-- **Remote Code Execution**
-- **Data Exfiltration** (Files, SMS, Contacts, Call Logs)
-- **Real-time Device Control** (Screen mirroring, input injection)
-- **Persistence Mechanisms**
-- **Metasploit Integration** for advanced post-exploitation
+- Python 3.8 or newer
+- ADB (Android Debug Bridge) — install via `sudo apt install adb` or [platform-tools](https://developer.android.com/studio/releases/platform-tools)
+- Nmap — install via `sudo apt install nmap`
+- Python package: `python-nmap`
 
-### Device Management
-
-- 📸 Screenshot capture & automatic download
-- 🎥 Screen recording with configurable duration
-- 📁 File system exploration and transfer
-- 📱 App management (install/uninstall/launch)
-- 🔄 Advanced reboot options (recovery, bootloader)
-
-# Requirements  
-* [`python3`](https://www.python.org/) : Python 3.10 or Newer
-* [`pip`](https://pip.pypa.io/en/stable/installation/) : Package installer for Python
-* [`adb`](https://developer.android.com/studio/command-line/adb) : Android Debug Bridge (ADB) from `Android SDK Platform Tools`
-* [`metasploit-framework`](https://www.metasploit.com/) : Metasploit-Framework (`msfvenom` and `msfconsole`)
-* [`scrcpy`](https://github.com/Genymobile/scrcpy/releases/tag/v3.3.4) : Scrcpy v3.3.4
-* [`nmap`](https://nmap.org/) : Nmap
-
-## DOWNLOAD REQUIREMENTS (LINUX ONLY)
-``` bash 
-# Update & Upgrade system
-sudo apt update && sudo apt full-upgrade -y
-
-# Install Python 3 and pip
-sudo apt install -y python3 python3-pip
-
-# Verify Python version (needs to be 3.10+)
-python3 --version
-
-# Install ADB (Android Debug Bridge)
-sudo apt install -y android-tools-adb android-tools-fastboot
-
-# Install Metasploit Framework
-sudo apt install -y metasploit-framework
-
-# Install scrcpy (for Android screen mirroring/control)
-# Option 1: via apt (may not be the latest version)
-sudo apt install -y scrcpy
-# Option 2: latest release (v3.3.4) - https://github.com/Genymobile/scrcpy/releases/tag/v3.3.4
-
-# Install Nmap
-sudo apt install -y nmap
-```
-
-## VERIFY DOWNLOAD
-
-```bash 
-python3 --version
-pip3 --version
-adb version
-msfconsole --version
-scrcpy --version
-nmap --version
-```
-## 👷‍⚖️ Installation
+## Installation
 
 ```bash
-git clone https://github.com/hadeyghopte/bau_ko_phone.git
-cd bau_ko_phone
+git clone https://github.com/hadeyghoptey/AndroForge.git
+cd AndroForge
 python3 -m venv venv
 source venv/bin/activate
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 python main.py
 ```
-# Tutorial
 
+## First-Time Device Setup
 
-## Setting up Android Phone for the first time
+1. Enable Developer Options: open Settings, go to About Phone, tap Build Number seven times.
+2. Enable USB Debugging: navigate to Settings, Developer Options, enable USB debugging.
+3. Connect the device via USB and accept the RSA key fingerprint.
+4. Run `adb tcpip 5555` to switch the ADB daemon to TCP mode.
+5. Disconnect the USB cable and note the device IP address.
+6. Launch AndroForge, select Connect a Device, and enter the IP address.
 
-* __Enabling the Developer Options__
+## Project Structure
 
-1. Open `Settings`.
-2. Go to `About Phone`.
-3. Find `Build Number`.
-4. Tap on `Build Number` 7 times.
-5. Enter your pattern, PIN or password to enable the `Developer options` menu.
-6. The `Developer options` menu will now appear in your Settings menu.
-
-* __Enabling USB Debugging__
-
-1. Open `Settings`.
-2. Go to `System` > `Developer options`.
-3. Scroll down and Enable `USB debugging`.
-
-* __Connecting with Computer__
-
-1. Connect your Android device and `adb` host computer to a common Wi-Fi network.
-2. Connect the device to the host computer with a USB cable.
-3. Open a terminal in the computer and enter the following command :
 ```
-adb devices
+AndroForge/
+  main.py                  Entry point
+  modules/
+    config.py              Application configuration
+    console.py             ADB wrapper and output helpers
+    tools.py               Platform detection and tool resolution
+    color.py               ANSI color constants
+    banner.py              ASCII banner and menu layout
+    connection.py          Device connection, discovery, and server control
+    device.py              Shell, device info, battery, reboot, lock, power
+    media.py               Screenshot and screen recording
+    file_manager.py        File transfer, WhatsApp and camera data copy
+    app_manager.py         App listing, launch, install, uninstall, APK extraction
+    communication.py       SMS sending and URL opening
+    port_forward.py        TCP port forwarding and reverse forwarding
+    data_extraction.py     SMS, contact, and call log export
+    input_control.py       Keycode injection and device unlocking
+    extras.py              Logcat, backup and restore, notifications, WiFi
+  requirements.txt         Python dependencies
+  Downloaded-Files/        Default output directory for pulled data
 ```
-4. A pop-up will appear in the Android phone when you connect your phone to a new PC for the first time : `Allow USB debugging?`.
-5. Click on `Always allow from this computer` check-box and then click `Allow`.
-6. Then in the terminal enter the following command :
-```
-adb tcpip 5555
-```
-7. Now you can connect the Android Phone with the computer over Wi-Fi using `adb`.
-8. Disconnect the USB cable.
-9. Go to `Settings` >  `About Phone` > `Status` > `IP address` and note the phone's `IP Address`.
-10. Run BAU_KO_PHONE and select `Connect a device` and enter the target's `IP Address` to connect over Wi-Fi.
 
+## Acknowledgements
 
+AndroForge incorporates concepts and patterns from the following open-source projects:
 
-## Connecting the Android phone for the next time
+- **[PhoneSploit-Pro](https://github.com/AzeemIdrisi/PhoneSploit-Pro)** by Azeem Idrisi — primary architectural reference for modular design, console helpers, port forwarding, data extraction, and WiFi utilities.
+- **[Ghost Framework](https://github.com/entynetproject/ghost)** by Entynetproject — keycode injection and device control patterns.
+- **[ADB-Toolkit](https://github.com/ASHWIN990/ADB-Toolkit)** by ASHWINI SAHU — reference for multi-device ADB management workflows.
+- **[AndroRAT](https://github.com/karma9874/AndroRAT)** by karma9874 — insights on device information gathering.
+- **[Android-RAT](https://github.com/sa-fw-an/Android-RAT)** by Safwan Sayeed — APK handling and signing reference.
 
-1. Connect your Android device and host computer to a common Wi-Fi network.
-2. Run BAU_KO_PHONE and select `Connect a device` and enter the target's `IP Address` to connect over Wi-Fi.
+## License
 
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+This tool is provided for educational purposes and authorized security testing only. Unauthorized access to computer systems is illegal. The developers assume no liability for misuse or damage caused by this program.
