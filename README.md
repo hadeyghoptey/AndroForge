@@ -41,14 +41,13 @@ Android Debug Forge Toolkit — a modular ADB toolkit for Android device managem
 | 26 | Device Restore | Restore device from a backup file |
 | 27 | Notification Listener | Dump active notifications via dumpsys |
 | 28 | WiFi Management | List saved networks, toggle, view IP, ping, dump status |
-| 29 | Unlock Device | Wake, swipe, and enter passcode (resolution-aware) |
-| 30 | Lock Device | Lock screen via power button |
-| 31 | Use Keycodes | Interactive keycode sender with 17 actions |
-| 32 | Dump SMS | Export SMS messages to file |
-| 33 | Dump Contacts | Export contact list to file |
-| 34 | Dump Call Logs | Export call history to file |
-| 35 | Stop ADB Server | Kill the ADB server process |
-| 36 | Power Off Device | Shut down device |
+| 29 | Screen Mirror (scrcpy) | Mirror and control the device screen via scrcpy |
+| 30 | Use Keycodes | Interactive keycode sender with 17 actions |
+| 31 | Dump SMS | Export SMS messages to file |
+| 32 | Dump Contacts | Export contact list to file |
+| 33 | Dump Call Logs | Export call history to file |
+| 34 | Stop ADB Server | Kill the ADB server process |
+| 35 | Power Off Device | Shut down device |
 
 ## Requirements
 
@@ -68,14 +67,62 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## First-Time Device Setup
+## Tutorial
 
-1. Enable Developer Options: open Settings, go to About Phone, tap Build Number seven times.
-2. Enable USB Debugging: navigate to Settings, Developer Options, enable USB debugging.
-3. Connect the device via USB and accept the RSA key fingerprint.
-4. Run `adb tcpip 5555` to switch the ADB daemon to TCP mode.
-5. Disconnect the USB cable and note the device IP address.
-6. Launch AndroForge, select Connect a Device, and enter the IP address.
+### Setting Up Android Phone for the First Time
+
+#### Enabling Developer Options
+
+1. Open **Settings**.
+2. Go to **About Phone**.
+3. Find **Build Number**.
+4. Tap on **Build Number** 7 times.
+5. Enter your pattern, PIN or password to enable the Developer options menu.
+6. The **Developer options** menu will now appear in your Settings menu.
+
+#### Enabling USB Debugging
+
+1. Open **Settings**.
+2. Go to **System > Developer options**.
+3. Scroll down and enable **USB debugging**.
+
+#### Connecting with Computer
+
+1. Connect your Android device and ADB host computer to a common Wi-Fi network.
+2. Connect the device to the host computer with a USB cable.
+3. Open a terminal on the computer and enter:
+
+   ```bash
+   adb devices
+   ```
+
+4. A pop-up will appear on the Android phone when connecting to a new PC for the first time: **Allow USB debugging?**.
+5. Check **Always allow from this computer** and click **Allow**.
+6. In the terminal, enter:
+
+   ```bash
+   adb tcpip 5555
+   ```
+
+7. Now you can connect the Android phone with the computer over Wi-Fi using ADB.
+8. Disconnect the USB cable.
+9. Go to **Settings > About Phone > Status > IP address** and note the phone's IP address.
+10. Run AndroForge, select **Connect a device**, and enter the phone's IP address to connect over Wi-Fi.
+
+#### Connecting the Android Phone for Subsequent Sessions
+
+1. Connect your Android device and host computer to a common Wi-Fi network.
+2. Run AndroForge, select **Connect a device**, and enter the phone's IP address to connect over Wi-Fi.
+
+### Verify Dependencies
+
+```bash
+python3 --version
+pip3 --version
+adb version
+scrcpy --version
+nmap --version
+```
 
 ## Project Structure
 

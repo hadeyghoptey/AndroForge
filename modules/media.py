@@ -87,3 +87,10 @@ def screenrecord(config: AppConfig) -> None:
             os.startfile(str(local_path))
         else:
             subprocess.run([config.opener, str(local_path)])
+
+
+def screen_mirror(config: AppConfig) -> None:
+    print_info("Launching scrcpy screen mirror...")
+    result = subprocess.run(["scrcpy"], capture_output=True, text=True)
+    if result.returncode != 0:
+        print_error(result.stderr.strip() or "scrcpy failed to start")

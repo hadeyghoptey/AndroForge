@@ -82,28 +82,7 @@ def power_off(config: AppConfig) -> None:
     print_success("Powering off...")
 
 
-def unlock_device(config: AppConfig) -> None:
-    password = prompt("Password (Enter for blank): ")
-    print_info("Unlocking device...")
-    raw = adb_output(config, ["shell", "wm", "size"])
-    dims = raw.strip()
-    width, height = 1080, 2400
-    if "Physical size:" in dims:
-        parts = dims.split(":")[-1].strip().split("x")
-        if len(parts) == 2:
-            try:
-                width, height = int(parts[0]), int(parts[1])
-            except ValueError:
-                pass
-    swipe_x = width // 2
-    swipe_start_y = int(height * 0.8)
-    swipe_end_y = int(height * 0.2)
-    adb(config, ["shell", "input", "keyevent", "26"])
-    adb(config, ["shell", "input", "swipe", str(swipe_x), str(swipe_start_y), str(swipe_x), str(swipe_end_y), "200"])
-    if password:
-        adb(config, ["shell", "input", "text", f'"{password}"'])
-    adb(config, ["shell", "input", "keyevent", "66"])
-    print_success("Device unlocked.")
+
 
 
 def lock_device(config: AppConfig) -> None:

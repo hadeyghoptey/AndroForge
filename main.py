@@ -5,8 +5,8 @@ from modules.config import AppConfig
 from modules import banner
 from modules.tools import detect_platform, resolve_external_tools, check_packages
 from modules.connection import connect, list_devices, disconnect, scan_network, select_device, stop_adb_server
-from modules.device import get_shell, get_device_info, battery_info, reboot, power_off, unlock_device, lock_device
-from modules.media import get_screenshot, screenrecord
+from modules.device import get_shell, get_device_info, battery_info, reboot, power_off
+from modules.media import get_screenshot, screenrecord, screen_mirror
 from modules.file_manager import pull_file, push_file, copy_whatsapp, copy_camera
 from modules.app_manager import list_apps, run_app, install_app, uninstall_app, extract_apk
 from modules.communication import send_sms, open_link
@@ -114,20 +114,18 @@ def main(config: AppConfig) -> None:
     elif option == "28":
         wifi_management(config)
     elif option == "29":
-        unlock_device(config)
+        screen_mirror(config)
     elif option == "30":
-        lock_device(config)
-    elif option == "31":
         use_keycode(config)
-    elif option == "32":
+    elif option == "31":
         dump_sms(config)
-    elif option == "33":
+    elif option == "32":
         dump_contacts(config)
-    elif option == "34":
+    elif option == "33":
         dump_call_logs(config)
-    elif option == "35":
+    elif option == "34":
         stop_adb_server(config)
-    elif option == "36":
+    elif option == "35":
         power_off(config)
     else:
         from modules.console import print_error

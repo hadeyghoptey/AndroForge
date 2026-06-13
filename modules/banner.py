@@ -28,15 +28,15 @@ menu1 = f"""
 
 menu2 = f"""
 {WHITE}18. {GREEN}Send SMS                  {WHITE}28. {GREEN}WiFi Management
-{WHITE}19. {GREEN}Open Link on Device       {WHITE}29. {GREEN}Unlock Device
-{WHITE}20. {GREEN}Advanced Reboot Options   {WHITE}30. {GREEN}Lock Device
-{WHITE}21. {GREEN}Port Forwarding           {WHITE}31. {GREEN}Use Keycodes
-{WHITE}22. {GREEN}Logcat Viewer             {WHITE}32. {GREEN}Dump SMS
-{WHITE}23. {GREEN}Logcat Export             {WHITE}33. {GREEN}Dump Contacts
-{WHITE}24. {GREEN}APK Extractor             {WHITE}34. {GREEN}Dump Call Logs
-{WHITE}25. {GREEN}Device Backup             {WHITE}35. {GREEN}Stop ADB Server
-{WHITE}26. {GREEN}Device Restore            {WHITE}36. {GREEN}Power Off Device
-{WHITE}27. {GREEN}Notification Listener     {WHITE}99. {CYAN}Clear Screen
+{WHITE}19. {GREEN}Open Link on Device       {WHITE}29. {GREEN}Screen Mirror (scrcpy)
+{WHITE}20. {GREEN}Advanced Reboot Options   {WHITE}30. {GREEN}Use Keycodes
+{WHITE}21. {GREEN}Port Forwarding           {WHITE}31. {GREEN}Dump SMS
+{WHITE}22. {GREEN}Logcat Viewer             {WHITE}32. {GREEN}Dump Contacts
+{WHITE}23. {GREEN}Logcat Export             {WHITE}33. {GREEN}Dump Call Logs
+{WHITE}24. {GREEN}APK Extractor             {WHITE}34. {GREEN}Stop ADB Server
+{WHITE}25. {GREEN}Device Backup             {WHITE}35. {GREEN}Power Off Device
+{WHITE}26. {GREEN}Device Restore            {WHITE}99. {CYAN}Clear Screen
+{WHITE}27. {GREEN}Notification Listener     {WHITE}
 {YELLOW}                               P: Previous Page  (Page 2/2){RESET}
 """
 
