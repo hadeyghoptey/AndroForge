@@ -51,7 +51,7 @@ def main(config: AppConfig) -> None:
     if option == "0":
         config.run = False
         print("\nExiting...\n")
-    elif option == "99":
+    elif option in ("99", "clear"):
         clear_screen(config)
     elif option == "p":
         change_page(config, "p")
