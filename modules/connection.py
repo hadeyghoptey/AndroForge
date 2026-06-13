@@ -128,40 +128,46 @@ def scan_network(config: AppConfig) -> None:
     if not ip:
         print_error("Could not detect local IP. Check network connection.")
         return
-    subnet = ip + "/24"
-    print_info(f"Scanning {subnet} for live hosts...")
+    subnet = ip.rsplit(".", 1)[0] + ".0/24"
+    print_info(f"Scanning {subnet} for ADB ports 5555/5554...")
     try:
         import nmap
         nm = nmap.PortScanner()
-        nm.scan(hosts=subnet, arguments="-sn")
-        hosts = [h for h in nm.all_hosts() if nm[h]["status"]["state"] == "up"]
+        nm.scan(
+            hosts=subnet,
+            arguments="-Pn -sS -p 5555,5554 -sV -O --osscan-guess -T5 "
+                      "--min-rate 10000 --max-retries 1 "
+                      "--max-scan-delay 0 --open --version-intensity 9"
+        )
+        hosts = []
+        for h in sorted(nm.all_hosts(), key=lambda x: tuple(int(p) for p in x.split("."))):
+            tcp = nm[h].get("tcp", {})
+            adb_info = ""
+            status = ""
+            for port in (5555, 5554):
+                pinfo = tcp.get(port, {})
+                if pinfo.get("state") == "open":
+                    adb_info += f"{port}/tcp open "
+                    if not status:
+                        product = pinfo.get("product", "")
+                        extrainfo = pinfo.get("extrainfo", "")
+                        if "android" in (product + extrainfo).lower():
+                            status = "Android Device"
+                        elif "adb" in product.lower():
+                            status = "ADB Enabled"
+                        else:
+                            status = "Unknown Device"
+            if adb_info:
+                hosts.append((h, adb_info, status))
         if not hosts:
-            print_warning("No hosts found.")
+            print_warning("No devices found with ADB ports open.")
             return
-        hosts.sort(key=lambda h: tuple(int(p) for p in h.split(".")))
-        print_info(f"Found {len(hosts)} live host(s). Probing ADB ports...")
-        try:
-            nm.scan(hosts=" ".join(hosts), arguments="-p 5555,5554 -sT -sV --version-intensity 1 -T4")
-        except nmap.PortScannerError as e:
-            print_error(f"Port probe failed: {e}")
+        print_info(f"Found {len(hosts)} device(s) with ADB ports open.")
         print()
         print(f"  {'IP Address':<20} {'ADB Ports':<30} {'Status':<20}")
         print(f"  {'-'*20} {'-'*30} {'-'*20}")
-        for host in hosts:
-            adb_info = ""
-            status = ""
-            if host in nm.all_hosts():
-                tcp = nm[host].get("tcp", {})
-                for port in (5555, 5554):
-                    pinfo = tcp.get(port, {})
-                    if pinfo.get("state") == "open":
-                        adb_info += f"{port}/tcp open "
-                        product = pinfo.get("product", "")
-                        if "android" in product.lower() or "adb" in product.lower():
-                            status = "Android Device"
-            if not adb_info:
-                adb_info = "—"
-            print(f"  {host:<20} {adb_info:<30} {status:<20}")
+        for h, adb_info, status in hosts:
+            print(f"  {h:<20} {adb_info:<30} {status:<20}")
         print()
     except ImportError:
         print_error("nmap module not installed. Run: pip install python-nmap")

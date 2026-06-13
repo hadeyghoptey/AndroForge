@@ -90,7 +90,12 @@ def screenrecord(config: AppConfig) -> None:
 
 
 def screen_mirror(config: AppConfig) -> None:
-    print_info("Launching scrcpy screen mirror...")
-    result = subprocess.run(["scrcpy"], capture_output=True, text=True)
+    print_info("Launching scrcpy screen mirror (WiFi-optimized)...")
+    env = os.environ.copy()
+    env["XDG_RUNTIME_DIR"] = env.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}")
+    result = subprocess.run(
+        ["scrcpy", "-b", "2M", "--max-fps", "60", "--no-audio"],
+        capture_output=True, text=True, env=env
+    )
     if result.returncode != 0:
         print_error(result.stderr.strip() or "scrcpy failed to start")
